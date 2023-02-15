@@ -13,3 +13,11 @@
   .timer{
     float: right;
   }
+
+  .option-container{
+    display: list-item;
+  }
+
+  div button {
+    display: table;
+  }
