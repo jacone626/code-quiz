@@ -1,11 +1,11 @@
-//var generateBtn = document.querySelector(".start-button")
+var generateBtn = document.querySelector("#start-quiz")
 var timerEl = document.querySelector(".timer-count")
 
-//generateBtn.addEventListener("click", startGame)
+generateBtn.addEventListener("click", startQuiz)
 
-//function startGame() {
-//    countdown();
-//}
+function startQuiz() {
+   countdown();
+}
 
 function countdown() {
 
@@ -20,57 +20,55 @@ function countdown() {
     },1000);
   }
 
-  countdown();
-
   //Questions
 
-  const Questions = [{
+  var Questions = [{
     id: 0,
-    q: "What is capital of India?",
-    a: [{ text: "gandhinagar", isCorrect: false },
-        { text: "Surat", isCorrect: false },
-        { text: "Delhi", isCorrect: true },
-        { text: "mumbai", isCorrect: false }
+    q: "Commonly used data types DO NOT include:",
+    a: [{ text: "strings", isCorrect: false },
+        { text: "booleans", isCorrect: false },
+        { text: "alerts", isCorrect: true },
+        { text: "numbers", isCorrect: false }
     ]
 
 },
 {
     id: 1,
-    q: "What is the capital of Thailand?",
-    a: [{ text: "Lampang", isCorrect: false, isSelected: false },
-        { text: "phuket", isCorrect: false },
-        { text: "Ayutthaya", isCorrect: false },
-        { text: "Bangkok", isCorrect: true }
+    q: "The condition in an if/else stateent is enclosed within:",
+    a: [{ text: "quotes", isCorrect: false },
+        { text: "curly brackets", isCorrect: false },
+        { text: "parentheses", isCorrect: true },
+        { text: "square brackets", isCorrect: false}
     ]
 
 },
 {
     id: 2,
-    q: "What is the capital of Gujarat",
-    a: [{ text: "surat", isCorrect: false },
-        { text: "vadodara", isCorrect: false },
-        { text: "gandhinagar", isCorrect: true },
-        { text: "rajkot", isCorrect: false }
+    q: "Arrays in JavaScript can be used to store:",
+    a: [{ text: "numbers and strings", isCorrect: false },
+        { text: "other arrays", isCorrect: false },
+        { text: "booleans", isCorrect: false },
+        { text: "all of the above", isCorrect: true }
     ]
 
 },
 {
     id: 3,
-    q: "What is the capital of Thailand?",
-    a: [{ text: "Lampang", isCorrect: false, isSelected: false },
-        { text: "phuket", isCorrect: false },
-        { text: "Ayutthaya", isCorrect: false },
-        { text: "Bangkok", isCorrect: true }
+    q: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    a: [{ text: "JavaScript", isCorrect: false, isSelected: false },
+        { text: "terminal/bash", isCorrect: false },
+        { text: "for loops", isCorrect: false },
+        { text: "console.log", isCorrect: true }
     ]
 
 },
 {
     id: 4,
-    q: "What is the capital of Gujarat",
-    a: [{ text: "surat", isCorrect: false },
-        { text: "vadodara", isCorrect: false },
-        { text: "gandhinagar", isCorrect: true },
-        { text: "rajkot", isCorrect: false }
+    q: "String values must be enclosed within     when being assigned to variables.",
+    a: [{ text: "commas", isCorrect: false },
+        { text: "curly brackets", isCorrect: false },
+        { text: "quotes", isCorrect: true },
+        { text: "parentheses", isCorrect: false }
     ]
 
 }
