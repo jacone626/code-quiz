@@ -21,3 +21,12 @@
   div button {
     display: table;
   }
+
+  .option{
+    background-color: rgb(126, 32, 126);
+    color:white
+  }
+
+  .option:hover{
+    opacity: .6;
+  }
