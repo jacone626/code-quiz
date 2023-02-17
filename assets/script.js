@@ -34,11 +34,11 @@ function countdown() {
 },
 {
     id: 1,
-    q: "The condition in an if/else stateent is enclosed within:",
+    q: "The condition in an if/else statement is enclosed within:",
     a: [{ text: "1. quotes", isCorrect: false },
         { text: "2. curly brackets", isCorrect: false },
-        { text: "3. parentheses", isCorrect: true },
-        { text: "4. square brackets", isCorrect: false}
+        { text: "3. square brackets", isCorrect: false },
+        { text: "4. parentheses", isCorrect: true}
     ]
 
 },
@@ -133,36 +133,39 @@ op4.addEventListener("click", () => {
     selected = op4.value;
 })
 
+
 // Moving to the next question after selecting an option
 
-var optionsButton = document.getElementsByClassName("option")
 
-optionsButton.addEventListener("click", () => {
-    // Get the user's selected answer
-    var userChoice = document.querySelector("option");
-    if (userChoice) {
-      // Check if the user's answer is correct and increment the score
-      var currentQuizQuestion = quizQuestions[currentQuestion];
-      if (userChoice.value === currentQuizQuestion.correctAnswer) {
-        result[0].innerHTML = "Correct!";
-      }
-  
-      // Move on to the next question
-      currentQuestion++;
-      if (currentQuestion < quizQuestions.length) {
-        showQuestion();
-      } else {
-        // If there are no more questions, show the score 
-      }
-    }
-  });
+var optionsButton = document.getElementsByClassName("option");
+var id = 0;
+var result = document.getElementsByClassName("result");
 
+for (i of optionsButton) {
+i.addEventListener("click", () => {
+start=false;
+if (id < 4) {
+    id++;
+    iterate(id);
+} 
+    
+else {
+    // If there are no more questions, show the score 
+}
+
+if (selected == "true") {
+    result[0].innerHTML = "Correct!";
+} else {
+    result[0].innerHTML = "Wrong!";
+}
+});
+}
 
 var result = document.getElementsByClassName("result");
 // Evaluate method
 result[0].addEventListener("click", () => {
     if (selected == "true") {
-        result[0].innerHTML = "Correct!";
+        result[0].innerHTML = "uiuhiuyiyiu!";
     } else {
         result[0].innerHTML = "Wrong!";
     }
@@ -170,19 +173,5 @@ result[0].addEventListener("click", () => {
 }
 
 if (start) {
-iterate("0");
-}
-
-// Next button and method
-var next = document.getElementsByClassName('next')[0];
-var id = 0;
-
-next.addEventListener("click", () => {
-start = false;
-if (id < 2) {
-    id++;
-    iterate(id);
-    console.log(id);
-}
-
-})
+    iterate("0");
+    }
