@@ -155,17 +155,20 @@ else {
 
 if (selected == "true") {
     result[0].innerHTML = "Correct!";
-} else {
+} 
+else {
     result[0].innerHTML = "Wrong!";
 }
 });
 }
 
-var result = document.getElementsByClassName("result");
-// Evaluate method
+//Show final score
+var finalScore = 
+
+
 result[0].addEventListener("click", () => {
     if (selected == "true") {
-        result[0].innerHTML = "uiuhiuyiyiu!";
+        result[0].innerHTML = "Correct!";
     } else {
         result[0].innerHTML = "Wrong!";
     }
@@ -174,4 +177,7 @@ result[0].addEventListener("click", () => {
 
 if (start) {
     iterate("0");
-    }
+}
+
+
+
