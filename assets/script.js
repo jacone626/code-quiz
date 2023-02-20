@@ -1,7 +1,7 @@
 var generateBtn = document.querySelector("#start-quiz")
 var timerEl = document.querySelector(".timer-count")
 var codingQuizEl = document.querySelector("coding-quiz-challenege")
-var allDone = document.querySelector("#all-done")
+var allDoneEl = document.querySelector("#all-done")
 var currentQuestion = 0
 var timeLeft = 75;
 
@@ -11,6 +11,7 @@ generateBtn.addEventListener("click", startQuiz)
 function startQuiz() {
    countdown();
    showQuestion();
+   showAnswer(e);
 }
 
 function countdown() {
@@ -22,6 +23,10 @@ function countdown() {
         clearInterval(timeInterval);
       }
     },1000);
+  }
+
+  function pauseInterval () {
+    clearInterval(timeInterval)
   }
 
   //Questions
@@ -126,7 +131,8 @@ function showAnswer (e) {
 
     else {
         ShowFinalScore();
-        questionEl.classList.add("hide")
+        questionEl.classList.add("hide");
+        clearInterval(timeInterval)
     }
 }
 
@@ -135,16 +141,18 @@ optionsButtons.onclick = showAnswer
 
 
 //Show final score
-var finalScore = 0
+var finalScore = timeLeft.val
+var scoreEl = document.getElementById("score-value")
+
 
 function ShowFinalScore () {
-    allDone.classList.remove("hide")
-
+allDoneEl.classList.remove("hide");
+scoreEl.innerText = ("Your final score is")
 }
 
 
 //submit score
-
+var highscoresEl = document.getElementById("highscores");
 var highscoresListEl = $("#highscores-list")
 var formEl = $("#form")
 
@@ -158,6 +166,8 @@ function submitFinal(event) {
     }
 
     highscoresListEl.append("<li>" + yourInitials + "<li>")
+
+    highscoresEl.classList.remove("hide");
 }
 
 formEl.on("submit", submitFinal)
