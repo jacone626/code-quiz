@@ -1,6 +1,7 @@
 var generateBtn = document.querySelector("#start-quiz")
 var timerEl = document.querySelector(".timer-count")
 var currentQuestion = 0
+var timeLeft = 75;
 
 
 generateBtn.addEventListener("click", startQuiz)
@@ -11,8 +12,6 @@ function startQuiz() {
 }
 
 function countdown() {
-
-    var timeLeft = 75;
 
     var timeInterval = setInterval(function () {
       timeLeft--;
@@ -82,15 +81,16 @@ function countdown() {
   
 var result = document.getElementById("result");
 var promptEl = document.getElementById("question");
+var questionEl = document.getElementById("quiz-questions");
 
 var op1 = document.getElementById('op1');
 var op2 = document.getElementById('op2');
 var op3 = document.getElementById('op3');
 var op4 = document.getElementById('op4');
 
+
 function showQuestion() {
   
-var questionEl = document.getElementById("quiz-questions");
 questionEl.classList.remove("hide")
 
     // Setting the question text
@@ -115,15 +115,10 @@ option.addEventListener("click", () => {
         timeLeft= timeLeft-15;
     }
 
-    if (currentQuestion<4) {
-        currentQuestion++;
-    }
-    else {
-        //
-    }
+    currentQuestion++;
+    showQuestion();
 });
 }
-
 }
 
 
