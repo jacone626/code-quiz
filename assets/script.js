@@ -1,5 +1,7 @@
 var generateBtn = document.querySelector("#start-quiz")
 var timerEl = document.querySelector(".timer-count")
+var codingQuizEl = document.querySelector("coding-quiz-challenege")
+var allDone = document.querySelector("#all-done")
 var currentQuestion = 0
 var timeLeft = 75;
 
@@ -103,29 +105,42 @@ op3.innerText = questions[currentQuestion].answers[2];
 op4.innerText = questions[currentQuestion].answers[3];
 
 
-var optionsButtons = document.getElementsByClassName("option");
+}
 
-for (option of optionsButtons) {
-option.addEventListener("click", () => {
-    if (option.innerText === questions[currentQuestion].correctAnswer) {
-        result.innerText = "Correct!"
-    }
+var optionsButtons = document.getElementById("option-container");
+
+function showAnswer (e) {
+
+   if (e.target.textContent ===  questions[currentQuestion].correctAnswer) {
+        result.innerText = "Correct!"}
+
     else {
         result.innerText = "Wrong!";
         timeLeft= timeLeft-15;
     }
 
+    if (currentQuestion < 4) {
     currentQuestion++;
     showQuestion();
-});
-}
+    }
+
+    else {
+        ShowFinalScore();
+        questionEl.classList.add("hide")
+    }
 }
 
+optionsButtons.onclick = showAnswer
 
 
 
 //Show final score
 var finalScore = 0
+
+function ShowFinalScore () {
+    allDone.classList.remove("hide")
+
+}
 
 
 //submit score
