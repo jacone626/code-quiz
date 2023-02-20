@@ -4,6 +4,7 @@ var codingQuizEl = document.querySelector("coding-quiz-challenege")
 var allDoneEl = document.querySelector("#all-done")
 var currentQuestion = 0
 var timeLeft = 75;
+var timeInterval;
 
 
 generateBtn.addEventListener("click", startQuiz)
@@ -11,23 +12,19 @@ generateBtn.addEventListener("click", startQuiz)
 function startQuiz() {
    countdown();
    showQuestion();
-   showAnswer(e);
 }
 
 function countdown() {
 
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
       timeLeft--;
       timerEl.textContent = timeLeft;
-      if (timeLeft === 0) {
+      if (timeLeft <= 0) {
         clearInterval(timeInterval);
       }
     },1000);
   }
 
-  function pauseInterval () {
-    clearInterval(timeInterval)
-  }
 
   //Questions
 
@@ -124,15 +121,15 @@ function showAnswer (e) {
         timeLeft= timeLeft-15;
     }
 
-    if (currentQuestion < 4) {
+    if (currentQuestion < 4 && timeLeft > 0) {
     currentQuestion++;
     showQuestion();
     }
 
     else {
+        clearInterval(timeInterval)
         ShowFinalScore();
         questionEl.classList.add("hide");
-        clearInterval(timeInterval)
     }
 }
 
@@ -141,13 +138,11 @@ optionsButtons.onclick = showAnswer
 
 
 //Show final score
-var finalScore = timeLeft.val
 var scoreEl = document.getElementById("score-value")
-
 
 function ShowFinalScore () {
 allDoneEl.classList.remove("hide");
-scoreEl.innerText = ("Your final score is")
+scoreEl.innerText = ("Your final score is ") + timeLeft
 }
 
 
@@ -159,19 +154,28 @@ var formEl = $("#form")
 function submitFinal(event) {
     event.preventDefault();
 
-    var yourInitials = $("#form-initials").val();
+    var yourInitials = $("#form-initials").val() + ' - ' + timeLeft
+
+    highscoresListEl.append("<li>" + yourInitials + "<li>")
+
+    localStorage.setItem("Highscore", yourInitials)
+
+    highscoresEl.classList.remove("hide");
+
+    renderHighscore();
+}
+
+formEl.on("submit", submitFinal)
+
+function renderHighscore() {
+    var yourInitials = localStorage.getItem("Highscore")
 
     if (!yourInitials) {
         return;
     }
 
-    highscoresListEl.append("<li>" + yourInitials + "<li>")
-
-    highscoresEl.classList.remove("hide");
+    highscoresListEl.textContent = yourInitials
 }
-
-formEl.on("submit", submitFinal)
-
 
 
 
