@@ -30,3 +30,7 @@
   .option:hover{
     opacity: .6;
   }
+
+  .hide {
+    display: none;
+  }

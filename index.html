@@ -21,14 +21,14 @@
         <button id="start-quiz">Start Quiz</button>
       </section>
 
-      <section class="quizQuestions">
+      <section id ="quiz-questions" class="hide">
       
         <div class="question-container" id="question">
             Question goes here.
         </div>
         
         <div class="option-container">
-            <button class="option" onclick="" id="op1" >option1</button>
+            <button class="option" id="op1" >option1</button>
       
             <button class="option" id="op2" >option2</button>
       
@@ -37,21 +37,33 @@
             <button class="option" id="op4">option4</button>
         </div>
 
-        <div class="result"></div>
+        <div id="result"></div>
         
       </section>
 
       <section>
         <h2 class="all-done">All Done!</h2>
+        <div class="score-form">
           <p>Your final score is "value"</p>
           <p class="initials">Enter initials </p>
             <form id="form">
-              <input type="text" />
+              <input id="form-initials" type="text"/>
               <button class="submit">Submit</button>
             </form>
+          </div>
       </section>
 
+      <section>
+        <h2>Highscores</h2>
+        <ol id="highscores-list"></ol>
+          <div class="final-buttons">
+            <button>Go Back</button>
+            <button>Clear Highscores</button>
+          </div>
+      </section>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <script src="./assets/script.js"></script>
 
