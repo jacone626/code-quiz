@@ -8,29 +8,79 @@
   }
   .high-score{
     display: inline-block;
+    font-size: 20px;
   }
 
   .timer{
     float: right;
+    font-size: 20px;
+  }
+
+  #coding-quiz-challenege, #quiz-questions, #all-done{
+    text-align: center;
+    margin: auto;
+    width: 30%;
+  }
+  
+  #start-quiz{
+    background-color: rgb(126, 32, 126);
+    color:white;
+    border-radius: 5px;
+  }
+
+
+  #start-quiz:hover{
+    opacity: .6;
+  }
+
+  #question{
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 3%;
   }
 
   .option-container{
     display: list-item;
   }
 
-  div button {
-    display: table;
-  }
-
   .option{
     background-color: rgb(126, 32, 126);
-    color:white
+    color:white;
+    margin: 1%;
+    border-radius: 5px;
+    display: table;
   }
 
   .option:hover{
     opacity: .6;
   }
 
+  #result{
+    float: left;
+    margin: 2%;
+    opacity: .7;
+  }
+
+  #score-form{
+    white-space: nowrap;
+  }
+
+  .initials, #form {
+    display: inline-block;
+  }
+
+  #submit, #go-back, #clear-score {
+    background-color: rgb(126, 32, 126);
+    color:white;
+    border-radius: 5px;
+  }
+
   .hide {
     display: none;
+  }
+  
+  #highscores{
+    text-align: left;
+    margin: auto;
+    width: 30%;
   }

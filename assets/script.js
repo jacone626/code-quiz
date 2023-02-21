@@ -1,5 +1,5 @@
 var generateBtn = document.querySelector("#start-quiz")
-var timerEl = document.querySelector(".timer-count")
+var timerEl = document.querySelector("#timer-count")
 var codingQuizEl = document.querySelector("coding-quiz-challenege")
 var allDoneEl = document.querySelector("#all-done")
 var currentQuestion = 0
@@ -21,6 +21,7 @@ function countdown() {
       timerEl.textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timeInterval);
+        ShowFinalScore();
       }
     },1000);
   }
@@ -121,7 +122,7 @@ function showAnswer (e) {
         timeLeft= timeLeft-15;
     }
 
-    if (currentQuestion < 4 && timeLeft > 0) {
+    if (currentQuestion < 4) {
     currentQuestion++;
     showQuestion();
     }
@@ -134,8 +135,6 @@ function showAnswer (e) {
 }
 
 optionsButtons.onclick = showAnswer
-
-
 
 //Show final score
 var scoreEl = document.getElementById("score-value")
@@ -177,8 +176,20 @@ function renderHighscore() {
     highscoresListEl.textContent = yourInitials
 }
 
+//Refresh page and return to start
+goBackBtn = document.getElementById("go-back")
+
+goBackBtn.addEventListener("click", function() {
+    location.reload();
+})
 
 
 
+//Remove the local storage item
+clearBtn = document.getElementById("clear-score")
 
+clearBtn.addEventListener("click", function() {
+    localStorage.removeItem("Highscore");
+}
+)
 

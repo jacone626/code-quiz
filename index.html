@@ -10,14 +10,14 @@
 
     <header>
       <div class= "high-score">View High Scores</div>
-      <div class="timer">Time: <span class="timer-count">75</span></div>
+      <div class="timer">Time: <span id="timer-count">75</span></div>
     </header>
 
     <main>
 
       <section id="coding-quiz-challenege">
         <h2>Coding Quiz Challenge</h2>
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind tht incorrect answers will penalize your score/time by 15 seconds.</p>
+        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 15 seconds.</p>
         <button id="start-quiz">Start Quiz</button>
       </section>
 
@@ -45,10 +45,10 @@
         <h2>All Done!</h2>
         <p id="score-value"></p>
           <div class="score-form"></div>
-            <p class="initials">Enter initials </p>
+            <p class="initials">Enter initials:</p>
               <form id="form">
                 <input id="form-initials" type="text"/>
-                <button class="submit">Submit</button>
+                <button id="submit">Submit</button>
               </form>
           </div>
       </section>
@@ -56,10 +56,11 @@
       <section id="highscores" class="hide">
         <h2>Highscores</h2>
         <ol id="highscores-list"></ol>
-          <div class="final-buttons">
-            <button>Go Back</button>
-            <button>Clear Highscores</button>
-          </div>
+          <li id="highscore-orderedlist"></li>
+            <div class="final-buttons">
+              <button id="go-back">Go Back</button>
+              <button id="clear-score">Clear Highscores</button>
+            </div>
       </section>
     </main>
 
