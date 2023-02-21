@@ -28,7 +28,7 @@ You will also notice that the website does have some functionality for mobile de
 
 Below is a link to the active website:
 
-
+https://jacone626.github.io/code-quiz/
 
 ## Credits
 https://www.geeksforgeeks.org/how-to-create-a-simple-javascript-quiz/
