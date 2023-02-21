@@ -153,10 +153,9 @@ function ShowFinalScore () {
 //Submit score. Used some jQuery for practice
 var highscoresEl = document.getElementById("highscores");
 var highscoresListEl = $("#highscores-list");
+var listStorageEl = $("#list-storage")
 var formEl = $("#form");
 var headerEl = document.getElementById("header-timer");
-var scores = [];
-
 
 function submitFinal(event) {
     event.preventDefault();
@@ -187,7 +186,7 @@ function renderHighscore() {
         return;
     }
 
-    highscoresListEl.textContent = yourInitials;
+   highscoresListEl.textContent = yourInitials;
 }
 
 //Refresh page and return to start

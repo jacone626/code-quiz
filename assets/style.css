@@ -2,13 +2,15 @@
     box-sizing: border-box;
   }
 
-  header{
+  #header-timer{
     padding: 20px;
     font-size: 1.5em
   }
+  
   #high-score{
     display: inline-block;
     font-size: 20px;
+    color:rgb(126, 32, 126)
   }
 
   #timer{
