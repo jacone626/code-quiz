@@ -6,12 +6,12 @@
     padding: 20px;
     font-size: 1.5em
   }
-  .high-score{
+  #high-score{
     display: inline-block;
     font-size: 20px;
   }
 
-  .timer{
+  #timer{
     float: right;
     font-size: 20px;
   }
@@ -32,6 +32,10 @@
     text-align: center;
     margin: auto;
     width: 30%;
+  }
+
+  #all-done h2, #score-value, #score-form{
+    text-align: left;
   }
   
   #start-quiz{
@@ -94,5 +98,14 @@
   #highscores{
     text-align: left;
     margin: auto;
-    width: 30%;
+    margin-top: 5%;
+    width: 20%;
+  }
+
+  @media screen and (max-width: 600px) {
+  
+    #coding-quiz-challenege, #quiz-questions, #all-done, #highscores {
+    width: 100%;
+    margin: 0%;
+    }
   }

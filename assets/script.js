@@ -1,6 +1,6 @@
 var startQuizBtn = document.querySelector("#start-quiz")
 var timerEl = document.querySelector("#timer-count")
-var codingQuizEl = document.querySelector("coding-quiz-challenege")
+var codingQuizEl = document.querySelector("#coding-quiz-challenege")
 var allDoneEl = document.querySelector("#all-done")
 var currentQuestion = 0
 var timeLeft = 75;
@@ -13,12 +13,13 @@ startQuizBtn.addEventListener("click", () => {
    codingQuizEl.classList.add("hide")
 })
 
-
+//This starts the quiz and shows the questions
 function startQuiz() {
    countdown();
    showQuestion();
 }
 
+//This is the timer function
 function countdown() {
 
     timeInterval = setInterval(function () {
@@ -31,8 +32,7 @@ function countdown() {
     },1000);
   }
 
-
-  //Questions
+//Questions
 
   var questions = [{
     prompt: "Commonly used data types DO NOT include:",
@@ -88,7 +88,7 @@ function countdown() {
 ]
 
 
-  
+//Creating variables for the question and answers 
 var result = document.getElementById("result");
 var promptEl = document.getElementById("question");
 var questionEl = document.getElementById("quiz-questions");
@@ -103,19 +103,17 @@ function showQuestion() {
   
 questionEl.classList.remove("hide")
 
-    // Setting the question text
+// Setting the question text
 promptEl.innerText = questions[currentQuestion].prompt;
 
-    // Providing option text 
+// Providing option text 
 op1.innerText = questions[currentQuestion].answers[0];
 op2.innerText = questions[currentQuestion].answers[1];
 op3.innerText = questions[currentQuestion].answers[2];
 op4.innerText = questions[currentQuestion].answers[3];
-
-
 }
 
-//Show answer and move to the next question
+//Show answer and move to the next question unless time is out or we have completed the quiz
 
 var optionsButtons = document.getElementById("option-container");
 
@@ -137,7 +135,6 @@ function showAnswer (e) {
     else {
         clearInterval(timeInterval)
         ShowFinalScore();
-        questionEl.classList.add("hide");
     }
 }
 
@@ -147,16 +144,19 @@ optionsButtons.onclick = showAnswer
 var scoreEl = document.getElementById("score-value")
 
 function ShowFinalScore () {
-allDoneEl.classList.remove("hide");
-scoreEl.innerText = ("Your final score is ") + timeLeft
+  questionEl.classList.add("hide");
+  allDoneEl.classList.remove("hide");
+  scoreEl.innerText = ("Your final score is ") + timeLeft
 }
 
 
-//submit score
+//Submit score. Used some jQuery for practice
 var highscoresEl = document.getElementById("highscores");
-var highscoresListEl = $("#highscores-list")
-var formEl = $("#form")
-var highscoresOrderedListEl = $("highscores-orderedlist")
+var highscoresListEl = $("#highscores-list");
+var formEl = $("#form");
+var headerEl = document.getElementById("header-timer");
+var scores = [];
+
 
 function submitFinal(event) {
     event.preventDefault();
@@ -165,7 +165,11 @@ function submitFinal(event) {
 
     highscoresListEl.append("<li>" + yourInitials + "<li>")
 
-    localStorage.setItem("Highscore", yourInitials)
+    localStorage.setItem("highscore", yourInitials)
+
+    allDoneEl.classList.add("hide");
+
+    headerEl.classList.add("hide")
 
     highscoresEl.classList.remove("hide");
 
@@ -174,14 +178,16 @@ function submitFinal(event) {
 
 formEl.on("submit", submitFinal)
 
+renderHighscore();
+
 function renderHighscore() {
-    var yourInitials = localStorage.getItem("Highscore")
+    var yourInitials = localStorage.getItem("highscore")
 
     if (!yourInitials) {
         return;
     }
 
-    highscoresListEl.textContent = yourInitials
+    highscoresListEl.textContent = yourInitials;
 }
 
 //Refresh page and return to start
@@ -197,7 +203,11 @@ goBackBtn.addEventListener("click", function() {
 clearBtn = document.getElementById("clear-score")
 
 clearBtn.addEventListener("click", function() {
-    localStorage.removeItem("Highscore");
+    localStorage.removeItem("highscore");
 }
 )
 
+//View Highscores page
+var viewHighscores = document.getElementById("high-score")
+
+viewHighscores.addEventListener("click", renderHighscore)
