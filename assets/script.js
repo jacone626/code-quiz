@@ -1,4 +1,4 @@
-var generateBtn = document.querySelector("#start-quiz")
+var startQuizBtn = document.querySelector("#start-quiz")
 var timerEl = document.querySelector("#timer-count")
 var codingQuizEl = document.querySelector("coding-quiz-challenege")
 var allDoneEl = document.querySelector("#all-done")
@@ -6,8 +6,13 @@ var currentQuestion = 0
 var timeLeft = 75;
 var timeInterval;
 
+//Start quiz when you click on the start quiz button
+startQuizBtn.addEventListener("click", startQuiz) 
+    
+startQuizBtn.addEventListener("click", () => {
+   codingQuizEl.classList.add("hide")
+})
 
-generateBtn.addEventListener("click", startQuiz)
 
 function startQuiz() {
    countdown();
@@ -110,6 +115,8 @@ op4.innerText = questions[currentQuestion].answers[3];
 
 }
 
+//Show answer and move to the next question
+
 var optionsButtons = document.getElementById("option-container");
 
 function showAnswer (e) {
@@ -149,6 +156,7 @@ scoreEl.innerText = ("Your final score is ") + timeLeft
 var highscoresEl = document.getElementById("highscores");
 var highscoresListEl = $("#highscores-list")
 var formEl = $("#form")
+var highscoresOrderedListEl = $("highscores-orderedlist")
 
 function submitFinal(event) {
     event.preventDefault();

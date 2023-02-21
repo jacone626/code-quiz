@@ -16,7 +16,19 @@
     font-size: 20px;
   }
 
-  #coding-quiz-challenege, #quiz-questions, #all-done{
+  #coding-quiz-challenege{
+    text-align: center;
+    margin: auto;
+    width: 30%;
+  }
+
+  #quiz-questions{
+    text-align: center;
+    margin: auto;
+    width: 30%;
+  }
+
+  #all-done{
     text-align: center;
     margin: auto;
     width: 30%;
@@ -78,7 +90,7 @@
   .hide {
     display: none;
   }
-  
+
   #highscores{
     text-align: left;
     margin: auto;
