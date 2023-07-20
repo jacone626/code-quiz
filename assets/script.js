@@ -164,7 +164,11 @@ function submitFinal(event) {
 
     highscoresListEl.append("<li>" + yourInitials + "<li>")
 
-    localStorage.setItem("highscore", yourInitials)
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || []; 
+
+    highscores.push(yourInitials); 
+
+    localStorage.setItem("highscores", JSON.stringify(highscores));
 
     allDoneEl.classList.add("hide");
 
@@ -180,13 +184,13 @@ formEl.on("submit", submitFinal)
 renderHighscore();
 
 function renderHighscore() {
-    var yourInitials = localStorage.getItem("highscore")
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || []; 
 
-    if (!yourInitials) {
-        return;
+    highscoresListEl.empty(); 
+
+    for (var i = 0; i < highscores.length; i++) {
+        highscoresListEl.append("<li>" + highscores[i] + "</li>"); 
     }
-
-   highscoresListEl.textContent = yourInitials;
 }
 
 //Refresh page and return to start
@@ -202,11 +206,16 @@ goBackBtn.addEventListener("click", function() {
 clearBtn = document.getElementById("clear-score")
 
 clearBtn.addEventListener("click", function() {
-    localStorage.removeItem("highscore");
+    localStorage.removeItem("highscores");
 }
 )
 
 //View Highscores page
 var viewHighscores = document.getElementById("high-score")
 
-viewHighscores.addEventListener("click", renderHighscore)
+viewHighscores.addEventListener("click", function () {
+    headerEl.classList.add("hide");
+    codingQuizEl.classList.add("hide");
+    highscoresEl.classList.remove("hide");
+    renderHighscore();
+  });
